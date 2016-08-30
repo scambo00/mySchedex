@@ -54,11 +54,11 @@ module.exports = function (RED) {
                 config.suspended = true;
                 bootstrap();
             }
-		    if (msg.payload === 'resume') {
-                handled = true;
+			if (msg.payload === 'resume') {
+				handled = true;
 				config.suspended = false;
-                bootstrap();
-            }
+				bootstrap();
+			}
             if (msg.payload.hasOwnProperty('ontime')) {
                 handled = true;
                 on.time = msg.payload.ontime;
