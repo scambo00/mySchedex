@@ -49,12 +49,12 @@ module.exports = function (RED) {
                 handled = true;
                 send(off, true);
             }
-            if (msg.payload.hasOwnProperty("suspended")) {
+            if (msg.payload === 'suspended') {
                 handled = true;
                 config.suspended = msg.payload.suspended;
                 bootstrap();
             }
-		if (msg.payload.hasOwnProperty("resume")) {
+		if (msg.payload === 'resume') {
                 handled = true;
                 bootstrap();
             }
