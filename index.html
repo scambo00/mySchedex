@@ -23,7 +23,7 @@ THE SOFTWARE.
 -->
 
 <script type="text/javascript">
-    RED.nodes.registerType('schedex', {
+    RED.nodes.registerType('mySchedex', {
         category: 'wnr_AddOns',
         color: '#f37a33',
         defaults: {
@@ -46,9 +46,9 @@ THE SOFTWARE.
         outputs: 1,
         icon: 'datetime.png',
         label: function () {
-            return this.name || 'schedex';
+            return this.name || 'mySchedex';
         },
-        paletteLabel: 'schedex',
+        paletteLabel: 'mySchedex',
         align: 'left',
         oneditprepare: function () {
             if (!$("#node-input-lat").val().trim() && !$("#node-input-lon").val().trim()) {
@@ -139,8 +139,8 @@ THE SOFTWARE.
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="schedex">
-    <h1>SCHEDEX</h1>
+<script type="text/x-red" data-help-name="mySchedex">
+    <h1>MY SCHEDEX</h1>
     <p>
     Scheduler for node-red which allows you to enter on/off times as 24hr clock (e.g. 01:10) or suncalc events (e.g. goldenHour).
 It also allows you to offset times and randomise the time within the offset.
