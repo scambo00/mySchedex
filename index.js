@@ -30,7 +30,7 @@ module.exports = function (RED) {
     var _ = require("lodash");
     var fmt = 'YYYY-MM-DD HH:mm';
 
-    RED.nodes.registerType('schedex', function (config) {
+    RED.nodes.registerType('mySchedex', function (config) {
         RED.nodes.createNode(this, config);
         var node = this,
             on = setupEvent('on', 'dot'),
@@ -51,11 +51,12 @@ module.exports = function (RED) {
             }
             if (msg.payload === 'suspended') {
                 handled = true;
-                config.suspended = msg.payload.suspended;
+                config.suspended = true;
                 bootstrap();
             }
-		if (msg.payload === 'resume') {
+		    if (msg.payload === 'resume') {
                 handled = true;
+				config.suspended = false;
                 bootstrap();
             }
             if (msg.payload.hasOwnProperty('ontime')) {
