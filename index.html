@@ -31,14 +31,14 @@ THE SOFTWARE.
             suspended: {value: false},
             lat: {value: ''},
             lon: {value: ''},
-            ontime: {value: '07:28'},
+            ontime: {value: 'dusk'},
             ontopic: {value: ''},
-            onpayload: {value: ''},
+            onpayload: {value: 'on'},
             onoffset: {value: 0},
             onrandomoffset: {value: 0},
-            offtime: {value: 'goldenHour'},
+            offtime: {value: '23:00'},
             offtopic: {value: ''},
-            offpayload: {value: ''},
+            offpayload: {value: 'off'},
             offoffset: {value: 0},
             offrandomoffset: {value: 0}
         },
@@ -63,7 +63,7 @@ THE SOFTWARE.
     });
 </script>
 
-<script type="text/x-red" data-template-name="schedex">
+<script type="text/x-red" data-template-name="mySchedex">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
