@@ -115,7 +115,7 @@ module.exports = function (RED) {
                 var sunCalcTimes = SunCalc.getTimes(new Date(), config.lat, config.lon);
                 var date = sunCalcTimes[event.time];
                 if (date) {
-                    event.moment = moment(date);
+                    event.moment = moment.tz(date, "America/New_York");
                 }
             }
             if (event.moment) {
