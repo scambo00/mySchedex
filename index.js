@@ -26,7 +26,7 @@ module.exports = function (RED) {
     'use strict';
 
     var moment = require('moment-timezone');
-    var SunCalc = require('suncalc');
+	var SunCalc = require('suncalc');
     var _ = require("lodash");
     var fmt = 'YYYY-MM-DD HH:mm';
 
@@ -37,6 +37,7 @@ module.exports = function (RED) {
             off = setupEvent('off', 'ring');
         on.inverse = off;
         off.inverse = on;
+		moment.tz.setDefault("America/New_York");
 
         node.on('input', function (msg) {
             var handled = false;
@@ -115,7 +116,7 @@ module.exports = function (RED) {
                 var sunCalcTimes = SunCalc.getTimes(new Date(), config.lat, config.lon);
                 var date = sunCalcTimes[event.time];
                 if (date) {
-                    event.moment = moment.tz(date, "America/New_York");
+                    event.moment = moment(date);
                 }
             }
             if (event.moment) {
