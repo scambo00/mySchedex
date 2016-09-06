@@ -25,7 +25,7 @@
 module.exports = function (RED) {
     'use strict';
 
-    var moment = require('moment');
+    var moment = require('moment-timezone');
     var SunCalc = require('suncalc');
     var _ = require("lodash");
     var fmt = 'YYYY-MM-DD HH:mm';
