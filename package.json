@@ -20,7 +20,9 @@
     "lodash": "^4.15.0",
     "moment": "^2.14.1",
 	"moment-timezone": "^0.5.4",
-    "suncalc": "^1.7.0"
+    "suncalc": "^1.7.0",
+	"timezoner": "^0.1.9"
+	
   },
   "devDependencies": {
     "chai": "^3.5.0"
