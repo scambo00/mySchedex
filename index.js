@@ -51,7 +51,7 @@ module.exports = function (RED) {
             }
         );
 		
-		moment.tz.setDefault(timezone);
+		moment.tz.setDefault(timezone.timeZoneId);
 
         node.on('input', function (msg) {
             var handled = false;
