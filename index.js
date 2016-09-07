@@ -39,7 +39,7 @@ module.exports = function (RED) {
         on.inverse = off;
         off.inverse = on;
 		
-		var timezone = America/New York;
+		var timezone = "America/New York";
 		moment.tz.setDefault(timezone);
 
         node.on('input', function (msg) {
