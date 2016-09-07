@@ -40,18 +40,18 @@ module.exports = function (RED) {
         off.inverse = on;
 		
 		var timezone = timezoner.getTimeZone(
-        config.lat, // Latitude coordinate
-        config.lon, // Longitude coordinate
-        function (err, data) {
-            if (err) {
-                return(err);
-            } else {
-                return(data);
+            config.lat, // Latitude coordinate
+            config.lon, // Longitude coordinate
+            function (err, data) {
+                if (err) {
+                    return(err);
+                } else {
+                    return(data);
                 }
             }
         );
 		
-		moment.tz.setDefault(timezone.timeZoneId);
+		moment.tz.setDefault(timezone[timeZoneId]);
 
         node.on('input', function (msg) {
             var handled = false;
