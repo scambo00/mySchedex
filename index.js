@@ -29,7 +29,7 @@ module.exports = function (RED) {
 	var SunCalc = require('suncalc');
     var _ = require("lodash");
     var fmt = 'YYYY-MM-DD HH:mm';
-	var geoTz = require('geo-tz')
+	var timezoner = require('timezoner');
 
     RED.nodes.registerType('mySchedex', function (config) {
         RED.nodes.createNode(this, config);
@@ -39,7 +39,7 @@ module.exports = function (RED) {
         on.inverse = off;
         off.inverse = on;
 		
-		var timezone = geoTz.tz(config.lat, config.lon)
+		var timezone = America/New York;
 		moment.tz.setDefault(timezone);
 
         node.on('input', function (msg) {
