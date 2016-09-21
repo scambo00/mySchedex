@@ -39,8 +39,18 @@ module.exports = function (RED) {
         on.inverse = off;
         off.inverse = on;
 		
-		var timezone = "America/New_York";
-		moment.tz.setDefault(timezone);
+		/* Request timezone with location coordinates */
+	    timezoner.getTimeZone(
+        config.lat, // Latitude coordinate
+        config.lon, // Longitude coordinate
+        function (err, data) {
+            if (err) {
+                node.status({fill: 'red', shape: 'dot', text: 'timezone error'});
+            } else {
+                moment.tz.setDefault(data.timeZoneId);
+			}
+        }
+    );
 
         node.on('input', function (msg) {
             var handled = false;
