@@ -35,7 +35,7 @@ module.exports = function (RED) {
         RED.nodes.createNode(this, config);
         var node = this,
             on = setupEvent('on', 'dot'),
-            off = setupEvent('off', 'ring');
+            //off = setupEvent('off', 'ring');
         on.inverse = off;
         off.inverse = on;
 		
