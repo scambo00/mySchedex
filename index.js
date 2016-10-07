@@ -120,12 +120,51 @@ module.exports = function (RED) {
         }
 
         function send(event, manual) {
-            node.send({topic: event.topic, payload: event.payload});
-            node.status({
+			switch (now.getDay()) {
+				case 0:
+					if (node.sun)
+						goodDay=1;
+					break;
+				case 1:
+					if (node.mon)
+						goodDay=1; ;
+					break;
+				case 2:
+					if (node.tue)
+						goodDay=1;
+					break;
+				case 3:
+					if (node.wed)
+						goodDay=1; 
+					break;
+				case 4:
+					if (node.thu)
+						goodDay=1;
+					break;
+				case 5:
+					if (node.fri)
+						goodDay=1; 
+					break;
+				case 6:
+					if (node.sat)
+						goodDay=1;
+					break;
+			}
+			if(goodDay){
+				node.send({topic: event.topic, payload: event.payload});
+                node.status({
                 fill: manual ? 'blue' : 'green',
                 shape: event.shape,
                 text: event.name + (manual ? ' manual' : ' auto') + (config.suspended ? ' - scheduling suspended' : (' until ' + event.inverse.moment.format(fmt)))
-            });
+                });
+			}
+			else{
+				node.status({
+                fill: 'grey',
+                shape: 'dot',
+                text: ' scheduling suspended today'
+                });
+			}
         }
 
         function schedule(event, isInitial) {
