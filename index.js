@@ -120,7 +120,7 @@ module.exports = function (RED) {
         }
 
         function send(event, manual) {
-			switch (now.getDay()) {
+			switch (moment().day()) {
 				case 0:
 					if (node.sun)
 						goodDay=1;
