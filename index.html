@@ -27,6 +27,13 @@ THE SOFTWARE.
         category: 'wnr_AddOns',
         color: '#f37a33',
         defaults: {
+			sun: {value:true},
+			mon: {value:true},
+			tue: {value:true},
+			wed: {value:true},
+			thu: {value:true},
+			fri: {value:true},
+			sat: {value:true},
             name: {value: ''},
             suspended: {value: false},
             lat: {value: ''},
@@ -131,6 +138,20 @@ THE SOFTWARE.
             Use random off time within offset period
         </label>
     </div>
+	<style>
+	input[type=checkbox] { vertical-align:top; position:relative; bottom:1px; } 
+	</style>
+  
+	<div>
+		<span style="width: 50px; float: left; margin-left: 5px;"><input type="checkbox" id="node-input-sun" placeholder="sun" >Sun</span>
+		<span style="width: 50px; float: left; margin-left: 5px;"><input type="checkbox" id="node-input-mon" placeholder="mon" >Mon</span>
+		<span style="width: 50px; float: left; margin-left: 5px;"><input type="checkbox" id="node-input-tue" placeholder="tue" >Tue</span>
+		<span style="width: 50px; float: left; margin-left: 5px;"><input type="checkbox" id="node-input-wed" placeholder="wed" >Wed</span>
+		<span style="width: 50px; float: left; margin-left: 5px;"><input type="checkbox" id="node-input-thu" placeholder="thu" >Thu</span>
+		<span style="width: 50px; float: left; margin-left: 5px;"><input type="checkbox" id="node-input-fri" placeholder="fri" >Fri</span>
+		<span style="width: 50px; float: left; margin-left: 5px;"><input type="checkbox" id="node-input-sat" placeholder="sat" >Sat</span>
+	</div>
+	<br/><br/>
 </script>
 
 <script type="text/x-red" data-help-name="mySchedex">

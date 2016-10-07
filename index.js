@@ -39,18 +39,27 @@ module.exports = function (RED) {
         on.inverse = off;
         off.inverse = on;
 		
+		node.sun = config.sun;
+		node.mon = config.mon;
+		node.tue = config.tue;
+		node.wed = config.wed;
+		node.thu = config.thu;
+		node.fri = config.fri;
+		node.sat = config.sat;
+		var goodDay=0;
+		
 		/* Request timezone with location coordinates */
 	    timezoner.getTimeZone(
-        config.lat, // Latitude coordinate
-        config.lon, // Longitude coordinate
-        function (err, data) {
-            if (err) {
-                node.status({fill: 'red', shape: 'dot', text: 'timezone error'});
-            } else {
-                moment.tz.setDefault(data.timeZoneId);
-			}
-        }
-    );
+            config.lat, // Latitude coordinate
+            config.lon, // Longitude coordinate
+            function (err, data) {
+                if (err) {
+                    node.status({fill: 'red', shape: 'dot', text: 'timezone error'});
+                } else {
+                    moment.tz.setDefault(data.timeZoneId);
+			    }
+            }
+        );
 
         node.on('input', function (msg) {
             var handled = false;
