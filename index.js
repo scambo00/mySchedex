@@ -122,7 +122,7 @@ module.exports = function (RED) {
 
         function send(event, manual) {
 
-			if(weekday[moment().day()]){
+			if(node.weekday[moment().day()]){
 				node.send({topic: event.topic, payload: event.payload});
                 node.status({
                 fill: manual ? 'blue' : 'green',
