@@ -38,6 +38,7 @@ THE SOFTWARE.
             suspended: {value: false},
             lat: {value: ''},
             lon: {value: ''},
+			goodDaytime: {value: '00:05'},
             ontime: {value: 'dusk'},
             ontopic: {value: ''},
             onpayload: {value: 'on'},
@@ -100,7 +101,10 @@ THE SOFTWARE.
 		<span style="width: 50px; float: left; margin-left: 5px;"><input type="checkbox" id="node-input-fri" placeholder="fri" >Fri</span>
 		<span style="width: 50px; float: left; margin-left: 5px;"><input type="checkbox" id="node-input-sat" placeholder="sat" >Sat</span>
 	</div>
-	<br/><br/>
+   <div class="form-row">
+        <label for="node-input-goodDaytime"><i class="icon-tag"></i>goodDay Time</label>
+        <input type="text" id="node-input-goodDaytime" style="display: none" placeholder="">
+    </div>
 	<hr>
     <div class="form-row">
         <label for="node-input-ontime"><i class="icon-tag"></i> On time</label>

@@ -39,15 +39,15 @@ module.exports = function (RED) {
         on.inverse = off;
         off.inverse = on;
 		
-		node.sun = config.sun;
-		node.mon = config.mon;
-		node.tue = config.tue;
-		node.wed = config.wed;
-		node.thu = config.thu;
-		node.fri = config.fri;
-		node.sat = config.sat;
-		var goodDay=0;
-		
+		node.weekday = new Array(7);
+        node.weekday[0]=  config.sun;
+        node.weekday[1] = config.mon;
+        node.weekday[2] = config.tue;
+        node.weekday[3] = config.wed;
+        node.weekday[4] = config.thu;
+        node.weekday[5] = config.fri;
+        node.weekday[6] = config.sat;
+				
 		/* Request timezone with location coordinates */
 	    timezoner.getTimeZone(
             config.lat, // Latitude coordinate
@@ -55,6 +55,7 @@ module.exports = function (RED) {
             function (err, data) {
                 if (err) {
                     node.status({fill: 'red', shape: 'dot', text: 'timezone error'});
+					//add node warning
                 } else {
                     moment.tz.setDefault(data.timeZoneId);
 			    }
@@ -120,38 +121,8 @@ module.exports = function (RED) {
         }
 
         function send(event, manual) {
-			goodDay = 0;
-			switch (moment().day()) {
-				case 0:
-					if (node.sun)
-						goodDay=1;
-					break;
-				case 1:
-					if (node.mon)
-						goodDay=1; ;
-					break;
-				case 2:
-					if (node.tue)
-						goodDay=1;
-					break;
-				case 3:
-					if (node.wed)
-						goodDay=1; 
-					break;
-				case 4:
-					if (node.thu)
-						goodDay=1;
-					break;
-				case 5:
-					if (node.fri)
-						goodDay=1; 
-					break;
-				case 6:
-					if (node.sat)
-						goodDay=1;
-					break;
-			}
-			if(goodDay){
+
+			if(weekday[moment().day()]){
 				node.send({topic: event.topic, payload: event.payload});
                 node.status({
                 fill: manual ? 'blue' : 'green',
